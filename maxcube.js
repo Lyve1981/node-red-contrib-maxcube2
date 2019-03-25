@@ -264,7 +264,7 @@ module.exports = function(RED) {
           connected = false;
           if(node.maxCube != null) {
             node.log("Maxcube connection closed unexpectedly... will try to reconnect.");
-            node.maxcubeConnect();
+            setTimeout(node.maxcubeConnect, 1000);
           }
           else
             node.log("Maxcube connection closed...");
@@ -275,7 +275,7 @@ module.exports = function(RED) {
           connected = false;
           //force node to init connection if not available
           node.log("Maxcube was disconnected... will try to reconnect.");
-          node.maxcubeConnect();
+          setTimeout(node.maxcubeConnect, 1000);
         });
         node.maxCube.on('connected', function () {
             node.log("Maxcube connected");
